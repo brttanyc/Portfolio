@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Digital | Brittany Celestine</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            900: '#134e4a',
+                        },
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Kustomisasi Scrollbar & Animasi Halus */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Animasi Reveal saat Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gaya Khusus Cetak / Download PDF CV */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-cv, #printable-cv * {
+                visibility: visible;
+            }
+            #printable-cv {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: #ffffff !important;
+                color: #0f172a !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-navy-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- ==================== 1. NAVIGASI RESPONSIF ==================== -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/85 dark:bg-navy-900/85 border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo / Brand -->
+                <a href="#beranda" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-600 to-sky-600 flex items-center justify-center text-white font-heading font-bold text-lg shadow-sm group-hover:scale-105 transition-transform">
+                        BC
+                    </div>
+                    <span class="font-heading font-bold text-slate-900 dark:text-white tracking-tight text-base sm:text-lg">
+                        Brittany<span class="text-brand-600 dark:text-brand-500">.c</span>
+                    </span>
+                </a>
+
+                <!-- Menu Desktop -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="#beranda" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition">Beranda</a>
+                    <a href="#tentang" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition">Tentang Saya</a>
+                    <a href="#portofolio" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition">Portofolio</a>
+                    <a href="#cv" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition">CV</a>
+                    <a href="#kontak" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition">Kontak</a>
+                </nav>
+
+                <!-- Aksi Kanan: Mode Edit Cepat, Dark Mode & Hamburger -->
+                <div class="flex items-center gap-2">
+                    <button id="toggle-edit-btn" title="Sesuaikan Teks Profil" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition flex items-center gap-1.5 text-xs font-medium">
+                        <i class="fa-solid fa-pen-to-square text-brand-600 dark:text-brand-400"></i>
+                        <span class="hidden sm:inline" id="edit-btn-label">Mode Edit</span>
+                    </button>
+
+                    <button id="theme-toggle" aria-label="Ubah Tema Terang atau Gelap" class="p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition">
+                        <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
+                    </button>
+
+                    <button id="mobile-menu-btn" aria-label="Buka Menu Navigasi" class="md:hidden p-2.5 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-base"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-navy-900 px-4 pt-3 pb-5 space-y-1.5 shadow-lg">
+            <a href="#beranda" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Beranda</a>
+            <a href="#tentang" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Tentang Saya</a>
+            <a href="#portofolio" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Portofolio</a>
+            <a href="#cv" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">CV</a>
+            <a href="#kontak" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-brand-50 dark:hover:bg-slate-800 hover:text-brand-600">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Banner Info Mode Edit (Muncul hanya saat mode edit aktif) -->
+    <div id="edit-banner" class="hidden bg-brand-600 text-white text-xs sm:text-sm py-2.5 px-4 text-center sticky top-16 z-30 shadow-md">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-3">
+            <span><i class="fa-solid fa-circle-info mr-1.5"></i><strong>Mode Edit Aktif:</strong> Klik teks mana saja pada profil untuk menyesuaikannya secara langsung.</span>
+            <button id="save-edit-btn" class="bg-white text-brand-700 font-semibold px-3 py-1 rounded-lg text-xs hover:bg-brand-50 transition">Selesai & Simpan</button>
+        </div>
+    </div>
+
+    <main>
+        <!-- ==================== 2. BERANDA (HERO SECTION) ==================== -->
+        <section id="beranda" class="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
+            <!-- Dekorasi Latar Belakang Halus -->
+            <div class="absolute inset-0 -z-10 pointer-events-none">
+                <div class="absolute top-10 left-1/4 w-72 h-72 bg-brand-500/10 dark:bg-brand-500/15 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-10 right-1/4 w-80 h-80 bg-sky-500/10 dark:bg-sky-500/15 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                    <!-- Kolom Teks Profil -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/40 border border-brand-200 dark:border-brand-700/60 text-brand-700 dark:text-brand-300 text-xs sm:text-sm font-medium">
+                            <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                            <span class="editable-field">Terbuka untuk Peluang Kerja, Magang & Beasiswa</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <p class="text-sm sm:text-base font-medium text-slate-500 dark:text-slate-400">
+                                Halo, saya
+                            </p>
+                            <h1 class="editable-field font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+                                Brittany Celestine
+                            </h1>
+                            <p class="editable-field text-base sm:text-lg font-semibold text-brand-600 dark:text-brand-400">
+                                Pelajar | Ketua OSIS | Front-End Developer & UI/UX Designer | Desain Grafis & Video Editor
+                            </p>
+                        </div>
+
+                        <!-- Tagline Personal Branding -->
+                        <blockquote class="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-navy-900/80 border-l-4 border-brand-500 shadow-sm text-left">
+                            <p class="editable-field font-heading text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 leading-snug">
+                                "Memadukan Rekayasa Perangkat Lunak, Desain Antarmuka (UI/UX), dan Komunikasi Visual untuk Menghadirkan Solusi Digital yang Informatif dan Berdampak."
+                            </p>
+                        </blockquote>
+
+                        <!-- Deskripsi Minat Karier & Akademik -->
+                        <p class="editable-field text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            Saya adalah pelajar jurusan <strong>Rekayasa Perangkat Lunak (PPLG)</strong> di <strong>SMKS Cinta Kasih Tzu Chi, Jakarta Barat</strong> yang aktif sebagai <strong>Ketua OSIS</strong> serta berpengalaman dalam <strong>Front-End Web Development</strong>, <strong>UI/UX Design</strong>, <strong>Desain Grafis</strong>, dan <strong>Video Editing</strong>. Dengan kombinasi kemampuan teknis, kreativitas visual, serta kepemimpinan organisasi, saya siap berkontribusi dalam peluang kerja, magang, maupun seleksi beasiswa.
+                        </p>
+
+                        <!-- Tombol CTA Utama -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+                            <a href="#portofolio" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md shadow-brand-600/20 transition transform hover:-translate-y-0.5">
+                                <i class="fa-solid fa-layer-group"></i>
+                                Lihat Portofolio
+                            </a>
+                            <a href="#cv" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white dark:bg-navy-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-semibold text-sm border border-slate-200 dark:border-slate-700 shadow-sm transition transform hover:-translate-y-0.5">
+                                <i class="fa-solid fa-file-arrow-down text-brand-600 dark:text-brand-400"></i>
+                                Pratinjau & Unduh CV
+                            </a>
+                        </div>
+
+                        <!-- Tautan Cepat Sosial & Kontak -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-1 text-xs font-medium">
+                            <a href="mailto:brittanycelestine00@gmail.com" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-brand-500 hover:text-brand-600 transition">
+                                <i class="fa-solid fa-envelope text-brand-600"></i> Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/brittanycelestine" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-brand-500 hover:text-brand-600 transition">
+                                <i class="fa-brands fa-linkedin text-sky-600"></i> LinkedIn
+                            </a>
+                            <a href="https://instagram.com/brttanyc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-brand-500 hover:text-brand-600 transition">
+                                <i class="fa-brands fa-instagram text-pink-600"></i> @brttanyc
+                            </a>
+                            <a href="https://github.com/brttanyc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-brand-500 hover:text-brand-600 transition">
+                                <i class="fa-brands fa-github text-slate-800 dark:text-slate-200"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Foto / Avatar Profesional Modern -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-72 sm:w-80 lg:w-96">
+                            <!-- Bingkai Dekoratif -->
+                            <div class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-brand-500/25 via-sky-500/20 to-indigo-500/25 blur-lg"></div>
+                            
+                            <div class="relative bg-white dark:bg-navy-900 rounded-3xl p-5 border border-slate-200/90 dark:border-slate-800 shadow-xl">
+                                <!-- Ilustrasi Avatar Vektor Profesional (SVG) -->
+                                <div class="aspect-square rounded-2xl bg-gradient-to-br from-slate-100 via-brand-50 to-sky-100 dark:from-slate-800 dark:via-navy-800 dark:to-slate-900 flex items-center justify-center overflow-hidden relative">
+                                    <svg viewBox="0 0 320 320" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi Avatar Profesional Brittany Celestine">
+                                        <defs>
+                                            <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+                                                <stop offset="0%" stop-color="#0d9488" stop-opacity="0.15"/>
+                                                <stop offset="100%" stop-color="#0284c7" stop-opacity="0.2"/>
+                                            </linearGradient>
+                                            <linearGradient id="blazerGrad" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#1e293b"/>
+                                                <stop offset="100%" stop-color="#0f172a"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="320" height="320" fill="url(#bgGrad)"/>
+                                        <!-- Lingkaran Aksen -->
+                                        <circle cx="160" cy="145" r="95" fill="#14b8a6" fill-opacity="0.15"/>
+                                        <!-- Rambut Belakang -->
+                                        <path d="M98 140 C95 85, 225 85, 222 140 L230 235 C200 245, 120 245, 90 235 Z" fill="#1e1b18"/>
+                                        <!-- Leher -->
+                                        <rect x="144" y="175" width="32" height="36" rx="12" fill="#f3c6a5"/>
+                                        <!-- Blazer / Pakaian Formal -->
+                                        <path d="M75 320 C80 245, 115 212, 160 212 C205 212, 240 245, 245 320 Z" fill="url(#blazerGrad)"/>
+                                        <!-- Kemeja Dalam -->
+                                        <path d="M136 212 L160 258 L184 212 Z" fill="#f8fafc"/>
+                                        <!-- Kerah Blazer -->
+                                        <path d="M134 212 L152 262 L124 248 Z" fill="#334155"/>
+                                        <path d="M186 212 L168 262 L196 248 Z" fill="#334155"/>
+                                        <!-- Wajah -->
+                                        <path d="M116 132 C116 96, 204 96, 204 132 C204 172, 184 192, 160 192 C136 192, 116 172, 116 132 Z" fill="#fad2b4"/>
+                                        <!-- Kacamata Modern Tipis -->
+                                        <rect x="126" y="132" width="28" height="20" rx="6" fill="none" stroke="#0f766e" stroke-width="2.5"/>
+                                        <rect x="166" y="132" width="28" height="20" rx="6" fill="none" stroke="#0f766e" stroke-width="2.5"/>
+                                        <line x1="154" y1="141" x2="166" y2="141" stroke="#0f766e" stroke-width="2.5"/>
+                                        <!-- Mata & Senyum Ramah -->
+                                        <circle cx="140" cy="142" r="3" fill="#1e293b"/>
+                                        <circle cx="180" cy="142" r="3" fill="#1e293b"/>
+                                        <path d="M148 166 Q160 175 172 166" fill="none" stroke="#9a3412" stroke-width="2.5" stroke-linecap="round"/>
+                                        <!-- Rambut Depan / Poni Rapi -->
+                                        <path d="M114 134 C114 92, 206 92, 206 134 C196 112, 174 106, 152 114 C135 120, 122 126, 114 134 Z" fill="#1e1b18"/>
+                                    </svg>
+                                </div>
+
+                                <!-- Lencana Info Singkat di Bawah Avatar -->
+                                <div class="mt-4 flex items-center justify-between gap-2 pt-2">
+                                    <div>
+                                        <p class="text-xs font-medium text-slate-500 dark:text-slate-400">Fokus Utama</p>
+                                        <p class="text-sm font-bold text-slate-900 dark:text-white">Web Dev, UI/UX & Media</p>
+                                    </div>
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-200">
+                                        <i class="fa-solid fa-location-dot text-brand-600"></i> Jakarta Barat
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 3. TENTANG SAYA ==================== -->
+        <section id="tentang" class="py-20 bg-white dark:bg-navy-900/60 border-y border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <!-- Header Bagian -->
+                <div class="max-w-3xl mx-auto text-center mb-12">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Profil & Kompetensi</span>
+                    <h2 class="mt-2 font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white">
+                        Tentang Saya
+                    </h2>
+                    <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                        Riwayat singkat, latar belakang pendidikan, nilai-nilai utama, serta perpaduan keahlian teknis dan kepemimpinan.
+                    </p>
+                </div>
+
+                <!-- Ringkasan Profil / Riwayat Singkat -->
+                <div class="mb-8 p-6 sm:p-7 rounded-2xl bg-slate-50 dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Ringkasan Profil</h3>
+                    </div>
+                    <p class="editable-field text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+                        Saya merupakan pelajar SMKS Cinta Kasih Tzu Chi jurusan Pengembangan Perangkat Lunak dan Gim (Rekayasa Perangkat Lunak) yang aktif dalam organisasi sebagai Ketua OSIS serta Divisi Humas dan Dokumentasi. Sebagai desainer grafis dan UI/UX designer yang belajar secara otodidak, saya berpengalaman membuat website untuk UMKM serta menghasilkan berbagai karya desain seperti infografis, flyer, poster, pixel art, logo, video, dan thumbnail. Saya juga berpengalaman menjadi tim media dan sukarelawan media sosial serta editing dalam sebuah yayasan dan organisasi, didukung kemampuan kreativitas, komunikasi, manajemen waktu, dan kerja tim.
+                    </p>
+                </div>
+
+                <!-- Grid Pendidikan & Nilai Utama -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+                    <!-- Kartu Latar Belakang Pendidikan -->
+                    <div class="lg:col-span-5 p-6 sm:p-7 rounded-2xl bg-slate-50 dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl mb-5">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white mb-2">
+                                Latar Belakang Pendidikan
+                            </h3>
+                            <div class="mt-4 p-4 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <span class="inline-block px-2.5 py-0.5 rounded-md bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 text-xs font-semibold mb-2">
+                                    Juli 2024 – Sekarang
+                                </span>
+                                <h4 class="editable-field font-heading font-bold text-base text-slate-900 dark:text-white">
+                                    SMKS Cinta Kasih Tzu Chi, Jakarta
+                                </h4>
+                                <p class="editable-field text-sm font-medium text-brand-600 dark:text-brand-400 mt-0.5">
+                                    Jurusan Rekayasa Perangkat Lunak (PPLG)
+                                </p>
+                                <ul class="mt-3 space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed list-disc list-inside">
+                                    <li><strong>Prestasi Akademik:</strong> Sering meraih peringkat 2 atau 3 di kelas.</li>
+                                    <li><strong>Kompetensi Utama:</strong> Pemrograman web (HTML, CSS, JavaScript, Bootstrap), pembuatan UI/UX, pengembangan front-end responsif, desain grafis digital, serta penyusunan dokumen proyek (proposal, laporan pengembangan, dan Business Model Canvas).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-5 pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                            <i class="fa-solid fa-award text-brand-600"></i>
+                            <span>Ketua OSIS & peraih penghargaan tingkat provinsi hingga nasional.</span>
+                        </div>
+                    </div>
+
+                    <!-- Kartu Nilai-Nilai Utama (Core Values) -->
+                    <div class="lg:col-span-7 p-6 sm:p-7 rounded-2xl bg-slate-50 dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading text-xl font-bold text-slate-900 dark:text-white">Nilai-Nilai Utama</h3>
+                                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Prinsip kerja dan karakter dalam berkarya maupun berorganisasi</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <div class="flex items-center gap-2.5 font-heading font-bold text-sm text-slate-900 dark:text-white mb-1.5">
+                                    <i class="fa-solid fa-gem text-brand-600"></i>
+                                    <span>Kreativitas & Estetika Fungsional</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    Memadukan desain visual yang komunikatif dengan struktur antarmuka yang mudah dipahami pengguna.
+                                </p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <div class="flex items-center gap-2.5 font-heading font-bold text-sm text-slate-900 dark:text-white mb-1.5">
+                                    <i class="fa-solid fa-people-group text-sky-600"></i>
+                                    <span>Kepemimpinan & Kolaborasi</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    Mengoordinasikan tim lintas divisi mulai dari perencanaan acara, publikasi, hingga evaluasi kegiatan.
+                                </p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <div class="flex items-center gap-2.5 font-heading font-bold text-sm text-slate-900 dark:text-white mb-1.5">
+                                    <i class="fa-solid fa-clock text-amber-500"></i>
+                                    <span>Disiplin & Manajemen Waktu</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    Menjaga ketepatan tenggat waktu antara prestasi akademik, proyek pengembangan, dan agenda organisasi.
+                                </p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <div class="flex items-center gap-2.5 font-heading font-bold text-sm text-slate-900 dark:text-white mb-1.5">
+                                    <i class="fa-solid fa-hand-holding-heart text-emerald-600"></i>
+                                    <span>Empati & Kepedulian Sosial</span>
+                                </div>
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                    Aktif dalam kegiatan sosial, kemanusiaan, dan aksi lingkungan bersama Tzu Shao dan Yayasan Buddha Tzu Chi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid Keahlian: Hard Skills & Soft Skills -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Hard Skills -->
+                    <div class="lg:col-span-7 p-6 sm:p-7 rounded-2xl bg-slate-50 dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Hard Skills</h3>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Keahlian teknis pemrograman, desain, video & kesekretariatan</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-5">
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">Pengembangan Web & Perangkat Lunak</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">HTML5</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">CSS3</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">JavaScript</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Bootstrap</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Visual Studio Code</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Business Model Canvas</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">UI/UX, Desain Grafis & Pixel Art</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Figma (UI/UX)</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Adobe Photoshop</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">CorelDraw</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Canva</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Aseprite</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2.5">Video Editing & Administrasi Event</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Adobe Premiere Pro</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">CapCut</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Microsoft Word & PowerPoint</span>
+                                    <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 shadow-2xs">Kesekretariatan & Rundown Event</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="lg:col-span-5 p-6 sm:p-7 rounded-2xl bg-slate-50 dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center">
+                                <i class="fa-solid fa-handshake-angle"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Soft Skills</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">Kompetensi kepemimpinan, komunikasi & organisasi</p>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white">Public Speaking & Pembawa Acara (MC)</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Berpengalaman menjadi MC, presenter lomba, serta membangun interaksi efektif dengan audiens.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white">Kepemimpinan & Manajemen Event</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Terbukti sebagai Ketua OSIS, Ketua Ekstrakurikuler, PIC utama, koordinator dokumentasi, dan pengurus event besar.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white">Manajemen Waktu & Prioritas</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Mengatur jadwal produksi konten, kegiatan organisasi, dan pembelajaran sehingga target tercapai tepat waktu.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-3 rounded-xl bg-white dark:bg-navy-950 border border-slate-200/70 dark:border-slate-800">
+                                <i class="fa-solid fa-circle-check text-brand-600 mt-0.5"></i>
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-900 dark:text-white">Komunikasi Publik & Kerja Tim</p>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Terbiasa berkoordinasi dengan pembina, panitia lintas divisi, dan tim kreatif media.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 4. PORTOFOLIO (PROJEK, PENGALAMAN & PRESTASI) ==================== -->
+        <section id="portofolio" class="py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <!-- Header Bagian -->
+                <div class="max-w-3xl mx-auto text-center mb-10">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Karya, Pengalaman & Prestasi</span>
+                    <h2 class="mt-2 font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white">
+                        Portofolio & Rekam Jejak
+                    </h2>
+                    <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                        Dokumentasi proyek web, desain grafis, video editing, pengalaman kerja & organisasi, serta prestasi kompetisi. Klik kartu untuk rincian tanggung jawab dan tautan karya.
+                    </p>
+                </div>
+
+                <!-- Filter Kategori Interaktif -->
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10" role="tablist" aria-label="Filter Kategori Portofolio">
+                    <button class="filter-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-brand-600 text-white shadow-sm transition" data-filter="all">
+                        Semua (13)
+                    </button>
+                    <button class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-navy-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition" data-filter="karya">
+                        Karya & Projek (4)
+                    </button>
+                    <button class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-navy-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition" data-filter="pengalaman">
+                        Kerja & Organisasi (6)
+                    </button>
+                    <button class="filter-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-navy-900 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-brand-500 transition" data-filter="prestasi">
+                        Prestasi (3)
+                    </button>
+                </div>
+
+                <!-- Grid Kartu Portofolio -->
+                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Kartu di-render dinamis melalui JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 5. CURRICULUM VITAE (CV ATS LENGKAP) ==================== -->
+        <section id="cv" class="py-20 bg-white dark:bg-navy-900/60 border-y border-slate-200/70 dark:border-slate-800/80">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Dokumen Resmi ATS-Friendly</span>
+                        <h2 class="mt-2 font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white">
+                            Curriculum Vitae (CV)
+                        </h2>
+                        <p class="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                            CV ATS lengkap Brittany Celestine siap pratinjau dan diunduh dalam format PDF.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+                        <label for="upload-cv-pdf" class="cursor-pointer inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white dark:bg-navy-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs sm:text-sm border border-slate-200 dark:border-slate-700 shadow-2xs transition" title="Tautkan file PDF CV asli Anda dari perangkat">
+                            <i class="fa-solid fa-upload text-brand-600"></i>
+                            <span id="upload-cv-label">Tautkan PDF Asli</span>
+                            <input type="file" id="upload-cv-pdf" accept="application/pdf" class="hidden">
+                        </label>
+                        <button id="download-cv-btn" class="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs sm:text-sm shadow-md shadow-brand-600/20 transition">
+                            <i class="fa-solid fa-file-pdf text-base"></i>
+                            Download CV (PDF)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bar Status jika file PDF lokal ditautkan -->
+                <div id="custom-pdf-bar" class="hidden mb-6 p-4 rounded-xl bg-brand-50 dark:bg-brand-950/50 border border-brand-200 dark:border-brand-800 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center gap-2.5 text-xs sm:text-sm text-brand-800 dark:text-brand-200">
+                        <i class="fa-solid fa-file-circle-check text-brand-600 text-base"></i>
+                        <span>File PDF terpasang: <strong id="custom-pdf-name">CV ATS BRITTANY CELESTINE.pdf</strong></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <a id="direct-pdf-download" href="#" download="CV_ATS_Brittany_Celestine.pdf" class="px-3.5 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold transition">
+                            Unduh File Terlampir
+                        </a>
+                        <button id="remove-custom-pdf" class="px-3 py-1.5 rounded-lg bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-rose-600 transition">
+                            Hapus
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dokumen Pratinjau CV ATS Lengkap (Area Cetak / Simpan PDF Bersih) -->
+                <div id="printable-cv" class="bg-white dark:bg-navy-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm space-y-6">
+                    <!-- Header CV -->
+                    <div class="border-b-2 border-slate-900 dark:border-slate-700 pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                                BRITTANY CELESTINE
+                            </h3>
+                            <p class="text-sm font-semibold text-brand-600 dark:text-brand-400 mt-1">
+                                Pelajar | OSIS | Desain Grafis | Video Editor
+                            </p>
+                        </div>
+                        <div class="text-xs text-slate-600 dark:text-slate-300 space-y-1 sm:text-right">
+                            <p>brittanycelestine00@gmail.com | (+62) 878-8950-9557 | Jakarta Barat</p>
+                            <p>www.linkedin.com/in/brittanycelestine | @brttanyc | github.com/brttanyc</p>
+                        </div>
+                    </div>
+
+                    <!-- 1. Riwayat Singkat -->
+                    <div>
+                        <h4 class="font-heading text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1.5 mb-2.5">
+                            Riwayat Singkat
+                        </h4>
+                        <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                            Saya lulusan/pelajar SMKS Cinta Kasih Tzu Chi jurusan Pengembangan Perangkat Lunak dan Gim yang aktif dalam organisasi seperti OSIS dan divisi hubungan masyarakat dan dokumentasi. Saya merupakan desainer grafis, dan UI/UX designer yang belajar secara otodidak, berpengalaman membuat website untuk UMKM serta menghasilkan berbagai karya desain seperti infografis, flyer, poster, pixel art, logo, video dan thumbnail. Saya terampil menggunakan Visual Studio Code, Adobe Photoshop, Aseprite, CorelDraw, Canva, Adobe Premiere, CapCut, HTML, CSS, JavaScript, dan Bootstrap, serta berpengalaman menjadi sukarelawan media sosial & editing dalam sebuah organisasi. Kemampuan saya dalam kreativitas, komunikasi, organisasi, manajemen waktu, dan kerja tim mendukung saya untuk terus berkembang, dan dengan minat besar pada pengembangan web serta desain antarmuka, saya siap berkontribusi dalam berbagai proyek dan tantangan profesional.
+                        </p>
+                    </div>
+
+                    <!-- 2. Latar Belakang Pendidikan -->
+                    <div>
+                        <h4 class="font-heading text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1.5 mb-2.5">
+                            Latar Belakang Pendidikan
+                        </h4>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm">
+                            <p class="font-bold text-slate-900 dark:text-white">SMKS Cinta Kasih Tzu Chi — Rekayasa Perangkat Lunak</p>
+                            <p class="text-slate-500 dark:text-slate-400 font-medium">Jakarta, Indonesia • Juli 2024 – Sekarang</p>
+                        </div>
+                        <ul class="mt-2 list-disc list-inside text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                            <li><strong>Prestasi Akademik:</strong> Sering meraih peringkat 2 atau 3 di kelas.</li>
+                            <li><strong>Kompetensi:</strong> Pemrograman web (HTML, CSS, JavaScript), pembuatan UI/UX, pengembangan front-end responsif, desain grafis untuk kebutuhan digital, pembuatan dokumen proyek seperti proposal, laporan pengembangan, dan Business Model Canvas.</li>
+                            <li><strong>Keterampilan:</strong> Public speaking, time management, organisasi, kepemimpinan, komunikasi, desain (Canva, Figma, CorelDraw), Visual Studio Code, Adobe Premiere, Adobe Photoshop, Aseprite, dan Microsoft Word.</li>
+                            <li><strong>Ringkasan:</strong> Aktif di organisasi sekolah (OSIS Divisi Humas dan Dokumentasi), serta mengikuti berbagai kompetisi di tingkat kota hingga nasional.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. Kompetensi Keahlian -->
+                    <div>
+                        <h4 class="font-heading text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1.5 mb-2.5">
+                            Kompetensi Keahlian
+                        </h4>
+                        <ul class="list-disc list-inside text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                            <li><strong>Softskills:</strong> Berpengalaman menjadi MC, ketua kelompok, ketua event, PIC utama, editor, perancangan, PIC lomba, operator, dan pengurus event; mampu menyampaikan informasi dengan jelas dan membangun interaksi yang baik dengan audiens.</li>
+                            <li><strong>Time Management & Kepemimpinan:</strong> Terbukti dalam memimpin tim, mengatur jadwal kegiatan, serta memastikan target tercapai tepat waktu.</li>
+                            <li><strong>Rekayasa Perangkat Lunak:</strong> Menguasai HTML & CSS, JavaScript, Bootstrap, CorelDraw, Adobe Premiere, Visual Studio Code, Canva, dan Business Model Canvas.</li>
+                            <li><strong>Desain Grafis:</strong> Mahir menggunakan Canva, CorelDraw, Adobe Photoshop, Aseprite, dan Figma untuk membuat poster, presentasi, dan media promosi lainnya.</li>
+                            <li><strong>Organisasi & Kesekretariatan:</strong> Berpengalaman menjadi sekretaris event besar; terampil membuat rundown, ketentuan, notulensi rapat, pembagian jobdesk, denah alur acara, list logistik event, rekap acara, jadwal dan dokumen acara lainnya.</li>
+                            <li><strong>Software Komputer:</strong> Terampil mengoperasikan Microsoft Word, Microsoft PowerPoint, Visual Studio Code, dan Canva untuk mendukung pekerjaan desain & komputer.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 4. Pengalaman Kerja -->
+                    <div>
+                        <h4 class="font-heading text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1.5 mb-2.5">
+                            Pengalaman Kerja
+                        </h4>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs sm:text-sm">
+                            <p class="font-bold text-slate-900 dark:text-white">Yayasan Buddha Tzu Chi — Tim Media</p>
+                            <p class="text-slate-500 dark:text-slate-400 font-medium">Januari 2026 – Maret 2026</p>
+                        </div>
+                        <ul class="mt-1.5 list-disc list-inside text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                            <li>Mengelola dan mengembangkan konten media sosial untuk mendukung penyebaran informasi serta meningkatkan engagement audiens.</li>
+                            <li>Mendesain berbagai materi visual seperti poster, feeds, dan carousel untuk kebutuhan publikasi kegiatan yayasan.</li>
+                            <li>Berkolaborasi dengan tim dalam merancang konsep konten kreatif yang sesuai dengan identitas dan nilai yayasan.</li>
+                            <li>Menggunakan software seperti Photoshop dan Premiere Pro untuk menghasilkan karya yang informatif, menarik, dan komunikatif.</li>
+                            <li>Mendukung kegiatan promosi dan branding organisasi melalui visual dan strategi komunikasi digital yang efektif.</li>
+                        </ul>
+                    </div>
+
+                    <!-- 5. Pengalaman Organisasi dan Kepanitiaan -->
+                    <div>
+                        <h4 class="font-heading text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1.5 mb-3">
+                            Pengalaman Organisasi dan Kepanitiaan
+                        </h4>
+                        <div class="space-y-3.5 text-xs text-slate-700 dark:text-slate-300">
+                            <div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                                    <p class="font-bold text-slate-900 dark:text-white">OSIS SMKS Cinta Kasih Tzu Chi — Ketua OSIS & Divisi Humas, Dokumentasi, BIBEKA, SORE OSKA</p>
+                                    <p class="text-slate-500 dark:text-slate-400">Agustus 2024 – Sekarang</p>
+                                </div>
+                                <p class="mt-1 leading-relaxed">Memimpin perencanaan, pelaksanaan, hingga evaluasi kegiatan OSIS; mengelola publikasi resmi melalui media sosial, poster, dan thumbnail; serta memproduksi konten digital seperti podcast dan video acara dari perencanaan, shooting, editing, hingga publikasi.</p>
+                            </div>
+
+                            <div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                                    <p class="font-bold text-slate-900 dark:text-white">Tzu Shao SMKS Cinta Kasih Tzu Chi — Panitia & Relawan</p>
+                                    <p class="text-slate-500 dark:text-slate-400">Juli 2024 – Sekarang</p>
+                                </div>
+                                <p class="mt-1 leading-relaxed">Mengoordinasikan kegiatan sosial dan kemanusiaan (bakti sosial, penggalangan dana, kunjungan panti asuhan, dan aksi lingkungan) termasuk perencanaan konsep, penyusunan jadwal, dan pembagian tugas relawan.</p>
+                            </div>
+
+                            <div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                                    <p class="font-bold text-slate-900 dark:text-white">COSPORTA 4.0 Cinta Kasih Tzu Chi — Koordinator Divisi Dokumentasi</p>
+                                    <p class="text-slate-500 dark:text-slate-400">Februari 2024 – Oktober 2024</p>
+                                </div>
+                                <p class="mt-1 leading-relaxed">Mengatur pembagian tugas tim dokumentasi, pengambilan foto dan video, pembuatan teaser (perencanaan konsep hingga editing), pengawasan kualitas hasil, serta pengelolaan arsip dokumentasi acara.</p>
+                            </div>
+
+                            <div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                                    <p class="font-bold text-slate-900 dark:text-white">DREAM (Daring to Reach Everyone and Make a Difference) — Sekretaris & Dokumentasi</p>
+                                    <p class="text-slate-500 dark:text-slate-400">Januari 2025 – Februari 2025</p>
+                                </div>
+                                <p class="mt-1 leading-relaxed">Menyusun notulensi rapat, surat-menyurat, data peserta, arsip digital/fisik, daftar hadir, serta mengoordinasikan dokumentasi dan pembuatan teaser/video recap acara.</p>
+                            </div>
+
+                            <div>
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+                                    <p class="font-bold text-slate-900 dark:text-white">Ekstrakurikuler Badminton SMPS Tunas Agung — Ketua Umum</p>
+                                    <p class="text-slate-500 dark:text-slate-400">Agustus 2021 – Juni 2024</p>
+                                </div>
+                                <p class="mt-1 leading-relaxed">Memimpin perencanaan dan pelaksanaan kegiatan latihan rutin, koordinasi dengan pembina dan sekolah, pengelolaan administrasi, serta evaluasi perkembangan anggota.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Proyek & Prestasi (2 Kolom Ringkas di Bawah CV) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
+                        <div>
+                            <h4 class="font-heading text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1.5 mb-2.5">
+                                Proyek dan Portofolio
+                            </h4>
+                            <ul class="list-disc list-inside text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
+                                <li><strong>Buku:</strong> "Petualangan di Masa Lalu: Jejak Zaman Kuno" (<a href="https://indonesia8.com/books/petualangan-di-masa-lalu-jejak-zaman-kuno" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline">indonesia8.com</a>)</li>
+                                <li><strong>Web Design & PHP:</strong> "E-Commerce: Beauty Be" (<a href="https://www.upwork.com/freelancers/~01bf6a19007d539ccb" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline">upwork.com</a>)</li>
+                                <li><strong>Portofolio Desain:</strong> <a href="https://bit.ly/3JFBh48" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline">bit.ly/3JFBh48</a></li>
+                                <li><strong>Portofolio Video Editing:</strong> <a href="https://bit.ly/3X4nEhP" target="_blank" rel="noopener noreferrer" class="text-brand-600 underline">bit.ly/3X4nEhP</a></li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-heading text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-1.5 mb-2.5">
+                                Prestasi dan Penghargaan
+                            </h4>
+                            <ul class="list-disc list-inside text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
+                                <li><strong>Juara Harapan 2 Lomba UI/UX IoFest 2026</strong> (Tingkat Nasional)</li>
+                                <li><strong>Juara 3 Kompetisi School Reinventing Cities 2025</strong> (Tingkat Provinsi)</li>
+                                <li><strong>Juara 3 Lomba Video Kreatif Arsitektur 2025</strong> (Tingkat Nasional)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 6. KONTAK ==================== -->
+        <section id="kontak" class="py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+                <div class="max-w-3xl mx-auto text-center mb-14">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Mari Terhubung</span>
+                    <h2 class="mt-2 font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white">
+                        Hubungi Saya
+                    </h2>
+                    <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300">
+                        Silakan hubungi saya untuk diskusi peluang kerja, program magang, kolaborasi proyek kreatif/web, maupun informasi beasiswa.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Informasi Kontak Aktif -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <!-- Kartu Email dengan Tombol Salin -->
+                        <div class="p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div class="flex items-start justify-between gap-3">
+                                <div class="flex items-center gap-3.5 min-w-0">
+                                    <div class="w-11 h-11 rounded-xl bg-brand-100 dark:bg-brand-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center text-lg shrink-0">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="text-xs font-medium text-slate-500 dark:text-slate-400">Email Profesional</p>
+                                        <a href="mailto:brittanycelestine00@gmail.com" id="email-text" class="text-sm font-bold text-slate-900 dark:text-white hover:text-brand-600 transition break-all">brittanycelestine00@gmail.com</a>
+                                    </div>
+                                </div>
+                                <button id="copy-email-btn" title="Salin Alamat Email" class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-brand-600 hover:text-white text-slate-700 dark:text-slate-200 text-xs font-semibold transition shrink-0">
+                                    <i class="fa-regular fa-copy mr-1"></i> Salin
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Kartu LinkedIn -->
+                        <a href="https://www.linkedin.com/in/brittanycelestine" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 shadow-sm transition group">
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="flex items-center gap-3.5 min-w-0">
+                                    <div class="w-11 h-11 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg shrink-0">
+                                        <i class="fa-brands fa-linkedin-in"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="text-xs font-medium text-slate-500 dark:text-slate-400">LinkedIn</p>
+                                        <p class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition truncate">www.linkedin.com/in/brittanycelestine</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-brand-600 shrink-0"></i>
+                            </div>
+                        </a>
+
+                        <!-- Kartu GitHub -->
+                        <a href="https://github.com/brttanyc" target="_blank" rel="noopener noreferrer" class="block p-5 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 shadow-sm transition group">
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="flex items-center gap-3.5 min-w-0">
+                                    <div class="w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 flex items-center justify-center text-lg shrink-0">
+                                        <i class="fa-brands fa-github"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <p class="text-xs font-medium text-slate-500 dark:text-slate-400">GitHub</p>
+                                        <p class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition truncate">https://github.com/brttanyc</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-400 group-hover:text-brand-600 shrink-0"></i>
+                            </div>
+                        </a>
+
+                        <!-- Kartu Instagram & Domisili -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <a href="https://instagram.com/brttanyc" target="_blank" rel="noopener noreferrer" class="p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500 shadow-sm transition flex items-center gap-3 group">
+                                <div class="w-10 h-10 rounded-xl bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Instagram</p>
+                                    <p class="text-xs font-bold text-slate-900 dark:text-white group-hover:text-brand-600 transition truncate">@brttanyc</p>
+                                </div>
+                            </a>
+
+                            <div class="p-4 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-map-pin"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Domisili & Kontak</p>
+                                    <p class="text-xs font-bold text-slate-900 dark:text-white">Jakarta Barat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Pesan Interaktif -->
+                    <div class="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <h3 class="font-heading text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1.5">
+                            Kirim Pesan Langsung
+                        </h3>
+                        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-6">
+                            Isi formulir di bawah ini dan saya akan segera merespons melalui email Anda.
+                        </p>
+
+                        <form id="contact-form" novalidate class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="sender-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Nama Lengkap *</label>
+                                    <input type="text" id="sender-name" name="name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+                                </div>
+                                <div>
+                                    <label for="sender-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Alamat Email *</label>
+                                    <input type="email" id="sender-email" name="email" required placeholder="nama@perusahaan.com" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="message-subject" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Keperluan / Subjek *</label>
+                                <select id="message-subject" name="subject" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition">
+                                    <option value="Peluang Kerja / Magang">Peluang Kerja / Magang</option>
+                                    <option value="Informasi / Seleksi Beasiswa">Informasi / Seleksi Beasiswa</option>
+                                    <option value="Kolaborasi Proyek Web / UI-UX">Kolaborasi Proyek Web / UI-UX</option>
+                                    <option value="Pertanyaan Umum">Pertanyaan Umum</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message-body" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Isi Pesan *</label>
+                                <textarea id="message-body" name="message" rows="4" required placeholder="Tuliskan pesan atau detail tawaran Anda secara singkat dan jelas..." class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-navy-950 border border-slate-200 dark:border-slate-700 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 transition resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md shadow-brand-600/20 transition">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== 7. FOOTER PROFESIONAL ==================== -->
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+                <div class="text-center md:text-left">
+                    <a href="#beranda" class="font-heading font-bold text-lg text-white">
+                        Brittany Celestine
+                    </a>
+                    <p class="text-xs text-slate-400 mt-1">
+                        Rekayasa Perangkat Lunak • Desain UI/UX • Desain Grafis & Video Editing
+                    </p>
+                </div>
+
+                <nav class="flex flex-wrap justify-center gap-5 text-xs sm:text-sm font-medium">
+                    <a href="#beranda" class="hover:text-brand-400 transition">Beranda</a>
+                    <a href="#tentang" class="hover:text-brand-400 transition">Tentang Saya</a>
+                    <a href="#portofolio" class="hover:text-brand-400 transition">Portofolio</a>
+                    <a href="#cv" class="hover:text-brand-400 transition">CV</a>
+                    <a href="#kontak" class="hover:text-brand-400 transition">Kontak</a>
+                </nav>
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+                <p>&copy; 2026 Brittany Celestine. Seluruh hak cipta dilindungi.</p>
+                <div class="flex items-center gap-4">
+                    <a href="mailto:brittanycelestine00@gmail.com" class="hover:text-brand-400 transition">Email</a>
+                    <a href="https://www.linkedin.com/in/brittanycelestine" target="_blank" rel="noopener noreferrer" class="hover:text-brand-400 transition">LinkedIn</a>
+                    <a href="https://instagram.com/brttanyc" target="_blank" rel="noopener noreferrer" class="hover:text-brand-400 transition">Instagram</a>
+                    <a href="https://github.com/brttanyc" target="_blank" rel="noopener noreferrer" class="hover:text-brand-400 transition">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODAL DETAIL PORTOFOLIO ==================== -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
+        <div class="bg-white dark:bg-navy-900 rounded-2xl max-w-2xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden animate-fadeIn">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+                <span id="modal-category" class="px-3 py-1 rounded-lg bg-brand-50 dark:bg-brand-900/40 text-brand-700 dark:text-brand-300 text-xs font-semibold">
+                    Kategori
+                </span>
+                <button id="close-modal-btn" aria-label="Tutup Modal" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 sm:p-7 space-y-5 max-h-[80vh] overflow-y-auto">
+                <div>
+                    <h3 id="modal-title" class="font-heading text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
+                        Judul Proyek
+                    </h3>
+                    <p id="modal-role" class="text-sm font-semibold text-brand-600 dark:text-brand-400 mt-1">
+                        Peran & Tanggung Jawab
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Deskripsi & Konteks</h4>
+                    <p id="modal-desc" class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                        Deskripsi lengkap proyek.
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Tanggung Jawab Utama</h4>
+                    <ul id="modal-responsibilities" class="list-disc list-inside text-sm text-slate-700 dark:text-slate-300 space-y-1.5">
+                    </ul>
+                </div>
+
+                <div class="p-4 rounded-xl bg-brand-50/70 dark:bg-brand-950/40 border border-brand-200/70 dark:border-brand-800/60">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-brand-700 dark:text-brand-300 mb-1">Hasil & Pencapaian</h4>
+                    <p id="modal-outcome" class="text-sm text-slate-800 dark:text-slate-200 font-medium">
+                        Hasil proyek.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Perangkat & Teknologi</h4>
+                    <div id="modal-tools" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <div id="modal-link-wrapper" class="pt-2 hidden">
+                    <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-semibold transition shadow-sm">
+                        <span>Buka Tautan Karya / Portofolio</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NOTIFIKASI TOAST ==================== -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 px-4 py-3.5 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-xl border border-slate-700 dark:border-slate-200 text-xs sm:text-sm font-medium">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-brand-400 dark:text-brand-600 text-base"></i>
+        <span id="toast-message">Pesan notifikasi</span>
+    </div>
+
+    <!-- ==================== JAVASCRIPT INTERAKTIF ==================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. DATA PORTOFOLIO, PENGALAMAN & PRESTASI (SESUAI CV ASLI BRITTANY CELESTINE)
+            const portfolioData = [
+                // --- KARYA & PROJEK ---
+                {
+                    id: 'beauty-be',
+                    title: 'Web Design & PHP: "E-Commerce: Beauty Be"',
+                    category: 'karya',
+                    categoryLabel: 'Karya & Projek • Web Development',
+                    role: 'Web Designer & Front-End / PHP Developer',
+                    shortDesc: 'Perancangan desain antarmuka web dan pengembangan sistem toko daring (e-commerce) produk kecantikan yang responsif.',
+                    fullDesc: 'Proyek pengembangan platform e-commerce Beauty Be yang mencakup perancangan tampilan antarmuka katalog produk, navigasi belanja, hingga integrasi sistem berbasis PHP.',
+                    responsibilities: [
+                        'Merancang tata letak visual dan pengalaman berbelanja yang bersih serta mudah dinavigasi.',
+                        'Mengimplementasikan tampilan antarmuka web responsif menggunakan HTML, CSS, JavaScript, dan PHP.',
+                        'Mendokumentasikan hasil karya pada profil portofolio profesional.'
+                    ],
+                    outcome: 'Menghasilkan prototipe dan sistem web e-commerce fungsional yang ditampilkan pada portofolio profesional.',
+                    tools: ['Web Design', 'PHP', 'HTML5', 'CSS3', 'JavaScript'],
+                    link: 'https://www.upwork.com/freelancers/~01bf6a19007d539ccb',
+                    icon: 'fa-bag-shopping',
+                    accent: 'from-teal-500 to-emerald-600'
+                },
+                {
+                    id: 'buku-jejak-zaman-kuno',
+                    title: 'Buku: "Petualangan di Masa Lalu: Jejak Zaman Kuno"',
+                    category: 'karya',
+                    categoryLabel: 'Karya & Projek • Literasi & Publikasi',
+                    role: 'Penulis & Kreator Buku Digital',
+                    shortDesc: 'Karya buku bertema petualangan sejarah yang diterbitkan secara daring sebagai wujud kreativitas literasi dan penceritaan.',
+                    fullDesc: 'Buku berjudul "Petualangan di Masa Lalu: Jejak Zaman Kuno" merupakan karya literasi digital yang memadukan alur cerita petualangan edukatif dengan pengemasan visual yang menarik bagi pembaca.',
+                    responsibilities: [
+                        'Menyusun alur cerita, riset latar sejarah, dan penulisan naskah buku secara utuh.',
+                        'Menyelaraskan struktur bab dan penyajian visual agar nyaman dibaca secara daring.',
+                        'Memublikasikan karya pada platform literasi digital Indonesia8.'
+                    ],
+                    outcome: 'Terbit secara daring dan dapat diakses publik melalui platform buku digital Indonesia8.',
+                    tools: ['Penulisan Kreatif', 'Riset Sejarah', 'Storytelling', 'Publikasi Digital'],
+                    link: 'https://indonesia8.com/books/petualangan-di-masa-lalu-jejak-zaman-kuno',
+                    icon: 'fa-book-open',
+                    accent: 'from-amber-500 to-orange-600'
+                },
+                {
+                    id: 'portofolio-desain',
+                    title: 'Koleksi Karya Desain Grafis, UI/UX & Pixel Art',
+                    category: 'karya',
+                    categoryLabel: 'Karya & Projek • Desain Grafis',
+                    role: 'Graphic Designer & UI/UX Designer',
+                    shortDesc: 'Kumpulan karya desain meliputi poster, feeds, carousel media sosial, infografis, flyer, logo, pixel art, hingga thumbnail.',
+                    fullDesc: 'Portofolio kurasi berbagai proyek desain grafis dan antarmuka yang dikerjakan untuk kebutuhan organisasi sekolah, yayasan, UMKM, maupun eksplorasi mandiri menggunakan CorelDraw, Photoshop, Figma, Canva, dan Aseprite.',
+                    responsibilities: [
+                        'Mendesain materi publikasi acara, infografis edukatif, poster promosi, flyer, dan identitas logo.',
+                        'Membuat aset ilustrasi pixel art menggunakan Aseprite serta antarmuka digital di Figma.',
+                        'Menjaga konsistensi tipografi, komposisi warna, dan pesan komunikasi visual.'
+                    ],
+                    outcome: 'Digunakan secara aktif dalam publikasi resmi organisasi, yayasan, dan kebutuhan promosi digital.',
+                    tools: ['Adobe Photoshop', 'CorelDraw', 'Figma', 'Canva', 'Aseprite'],
+                    link: 'https://bit.ly/3JFBh48',
+                    icon: 'fa-palette',
+                    accent: 'from-indigo-500 to-violet-600'
+                },
+                {
+                    id: 'portofolio-video',
+                    title: 'Koleksi Karya Video Editing, Teaser & Konten Kreatif',
+                    category: 'karya',
+                    categoryLabel: 'Karya & Projek • Video Editing',
+                    role: 'Video Editor & Content Producer',
+                    shortDesc: 'Produksi video teaser acara, video recap kegiatan, podcast sekolah, dan konten video kreatif media sosial.',
+                    fullDesc: 'Kumpulan hasil penyuntingan video dari tahap perencanaan konsep, pengambilan gambar, pemotongan ritme visual, color grading dasar, hingga penambahan audio dan grafis.',
+                    responsibilities: [
+                        'Menyunting teaser kegiatan berskala sekolah, video dokumentasi/recap, dan episode podcast.',
+                        'Mengolah transisi, teks grafis, dan audio agar pesan video tersampaikan secara dinamis.',
+                        'Memproduksi konten video format vertikal maupun lanskap sesuai kebutuhan platform.'
+                    ],
+                    outcome: 'Meningkatkan daya tarik publikasi digital acara dan dokumentasi kegiatan organisasi.',
+                    tools: ['Adobe Premiere Pro', 'CapCut', 'Storyboarding', 'Audio Sync'],
+                    link: 'https://bit.ly/3X4nEhP',
+                    icon: 'fa-film',
+                    accent: 'from-rose-500 to-pink-600'
+                },
+
+                // --- PENGALAMAN KERJA, ORGANISASI & KEPANITIAAN ---
+                {
+                    id: 'tzu-chi-media',
+                    title: 'Tim Media — Yayasan Buddha Tzu Chi',
+                    category: 'pengalaman',
+                    categoryLabel: 'Pengalaman Kerja • Jan 2026 – Mar 2026',
+                    role: 'Tim Media (Konten Media Sosial & Desain Visual)',
+                    shortDesc: 'Mengelola dan mengembangkan konten media sosial, mendesain poster, feeds, serta carousel untuk publikasi kegiatan yayasan.',
+                    fullDesc: 'Bertugas dalam tim media Yayasan Buddha Tzu Chi (Januari 2026 – Maret 2026) untuk mendukung penyebaran informasi kegiatan kemanusiaan dan branding organisasi melalui strategi komunikasi digital yang efektif.',
+                    responsibilities: [
+                        'Mengelola dan mengembangkan konten media sosial untuk meningkatkan engagement audiens.',
+                        'Mendesain berbagai materi visual seperti poster, feeds, dan carousel publikasi kegiatan yayasan.',
+                        'Berkolaborasi merancang konsep konten kreatif yang selaras dengan identitas dan nilai yayasan.',
+                        'Menggunakan Adobe Photoshop dan Premiere Pro untuk menghasilkan karya yang informatif dan komunikatif.'
+                    ],
+                    outcome: 'Mendukung promosi dan branding kegiatan yayasan secara konsisten dan komunikatif.',
+                    tools: ['Adobe Photoshop', 'Adobe Premiere Pro', 'Social Media Strategy', 'Branding'],
+                    icon: 'fa-briefcase',
+                    accent: 'from-sky-500 to-blue-600'
+                },
+                {
+                    id: 'osis-smks',
+                    title: 'Ketua OSIS & Divisi Humas Dokumentasi — OSIS SMKS Cinta Kasih Tzu Chi',
+                    category: 'pengalaman',
+                    categoryLabel: 'Organisasi • Agu 2024 – Sekarang',
+                    role: 'Ketua OSIS & Divisi Humas, Dokumentasi, BIBEKA, SORE OSKA',
+                    shortDesc: 'Memimpin kegiatan OSIS dari perencanaan hingga evaluasi serta mengelola publikasi resmi, podcast, dan konten digital sekolah.',
+                    fullDesc: 'Memegang amanah kepemimpinan utama sebagai Ketua OSIS sekaligus aktif pada Divisi Humas, Dokumentasi, BIBEKA, dan SORE OSKA di SMKS Cinta Kasih Tzu Chi sejak Agustus 2024.',
+                    responsibilities: [
+                        'Memimpin perencanaan, pelaksanaan acara, hingga evaluasi kegiatan OSIS bersama pembina dan seluruh divisi.',
+                        'Mengelola publikasi resmi OSIS melalui media sosial, poster, thumbnail, penulisan, hingga verifikasi informasi.',
+                        'Mendesain materi visual dan memproduksi konten digital seperti podcast dan media sosial dari perencanaan, shooting, editing, hingga publikasi.'
+                    ],
+                    outcome: 'Program kerja OSIS dan publikasi informasi sekolah berjalan terkoordinasi dengan standar visual yang rapi.',
+                    tools: ['Kepemimpinan', 'Manajemen Event', 'Public Speaking', 'Produksi Podcast'],
+                    icon: 'fa-users-gear',
+                    accent: 'from-emerald-500 to-teal-700'
+                },
+                {
+                    id: 'tzu-shao',
+                    title: 'Panitia & Relawan — Tzu Shao SMKS Cinta Kasih Tzu Chi',
+                    category: 'pengalaman',
+                    categoryLabel: 'Organisasi Sosial • Jul 2024 – Sekarang',
+                    role: 'Panitia & Relawan Kegiatan Sosial dan Kemanusiaan',
+                    shortDesc: 'Mengoordinasikan kegiatan bakti sosial, penggalangan dana, kunjungan panti asuhan, dan aksi lingkungan.',
+                    fullDesc: 'Berpartisipasi aktif sejak Juli 2024 dalam berbagai program pembinaan karakter, aksi kemanusiaan, dan pelestarian lingkungan bersama komunitas Tzu Shao SMKS Cinta Kasih Tzu Chi.',
+                    responsibilities: [
+                        'Mengikuti dan mengoordinasikan kegiatan bakti sosial, penggalangan dana, kunjungan panti asuhan, dan aksi lingkungan.',
+                        'Terlibat dalam perencanaan konsep kegiatan, penyusunan jadwal, kebutuhan logistik, serta pembagian tugas relawan.',
+                        'Mendukung program pembinaan moral dan budi pekerti melalui interaksi langsung dengan masyarakat.'
+                    ],
+                    outcome: 'Terlaksananya berbagai aksi sosial dan lingkungan dengan koordinasi relawan yang tertib.',
+                    tools: ['Koordinasi Relawan', 'Perencanaan Kegiatan', 'Empati Sosial'],
+                    icon: 'fa-hand-holding-heart',
+                    accent: 'from-teal-600 to-cyan-700'
+                },
+                {
+                    id: 'cosporta',
+                    title: 'Koordinator Divisi Dokumentasi — COSPORTA 4.0 Cinta Kasih Tzu Chi',
+                    category: 'pengalaman',
+                    categoryLabel: 'Kepanitiaan • Feb 2024 – Okt 2024',
+                    role: 'Koordinator Divisi Dokumentasi',
+                    shortDesc: 'Mengatur tim dokumentasi foto/video, pembuatan teaser acara dari konsep hingga editing, dan pengelolaan arsip.',
+                    fullDesc: 'Memimpin Divisi Dokumentasi pada rangkaian acara besar COSPORTA 4.0 Cinta Kasih Tzu Chi (Februari – Oktober 2024) guna memastikan seluruh momen acara terekam dan dipublikasikan tepat waktu.',
+                    responsibilities: [
+                        'Mengatur pembagian tugas tim dokumentasi dalam pengambilan foto dan video selama acara berlangsung.',
+                        'Memimpin pembuatan video teaser mulai dari perencanaan konsep hingga proses editing akhir.',
+                        'Melakukan pengawasan kualitas hasil visual serta menyusun rekapan dan arsip dokumentasi secara teratur.'
+                    ],
+                    outcome: 'Kebutuhan dokumentasi dan materi teaser promosi acara terpenuhi tepat waktu dengan kualitas terstandar.',
+                    tools: ['Adobe Premiere Pro', 'Manajemen Tim', 'Videografi & Fotografi', 'Pengarsipan'],
+                    icon: 'fa-camera-retro',
+                    accent: 'from-purple-500 to-indigo-600'
+                },
+                {
+                    id: 'dream-event',
+                    title: 'Sekretaris & Dokumentasi — DREAM (Daring to Reach Everyone and Make a Difference)',
+                    category: 'pengalaman',
+                    categoryLabel: 'Kepanitiaan • Jan 2025 – Feb 2025',
+                    role: 'Sekretaris & Koordinator Dokumentasi',
+                    shortDesc: 'Mengelola notulensi rapat, surat-menyurat, data peserta, arsip acara, serta pembuatan teaser dan video recap.',
+                    fullDesc: 'Menjalankan peran ganda di bidang kesekretariatan dan dokumentasi pada kegiatan DREAM (Januari – Februari 2025) dengan ketelitian administrasi dan koordinasi lintas divisi.',
+                    responsibilities: [
+                        'Menyusun notulensi rapat, surat-menyurat, data peserta, daftar hadir, serta mengelola arsip digital dan fisik.',
+                        'Mengoordinasikan pengambilan foto dan video dari perencanaan hingga pelaksanaan acara.',
+                        'Menyusun laporan dokumentasi serta memproduksi teaser dan video recap untuk publikasi kegiatan.'
+                    ],
+                    outcome: 'Administrasi peserta dan arsip dokumentasi kegiatan tersusun rapi dan mudah diakses oleh seluruh panitia.',
+                    tools: ['Microsoft Word', 'Kesekretariatan Event', 'Video Recap', 'Koordinasi Tim'],
+                    icon: 'fa-file-signature',
+                    accent: 'from-blue-500 to-indigo-600'
+                },
+                {
+                    id: 'badminton-ketua',
+                    title: 'Ketua Umum — Ekstrakurikuler Badminton SMPS Tunas Agung',
+                    category: 'pengalaman',
+                    categoryLabel: 'Organisasi • Agu 2021 – Jun 2024',
+                    role: 'Ketua Umum Ekstrakurikuler',
+                    shortDesc: 'Memimpin perencanaan dan pelaksanaan latihan rutin, koordinasi dengan pembina, administrasi, dan evaluasi anggota.',
+                    fullDesc: 'Memimpin organisasi ekstrakurikuler badminton selama hampir tiga tahun ajaran (Agustus 2021 – Juni 2024) dengan membangun budaya latihan yang disiplin dan suportif.',
+                    responsibilities: [
+                        'Memimpin perencanaan dan pelaksanaan jadwal kegiatan latihan rutin ekstrakurikuler.',
+                        'Berkoordinasi secara berkala dengan pembina dan pihak sekolah terkait kebutuhan kegiatan.',
+                        'Mengelola administrasi anggota dan melakukan evaluasi rutin untuk meningkatkan perkembangan keterampilan anggota.'
+                    ],
+                    outcome: 'Terciptanya lingkungan latihan yang teratur, disiplin, dan mendukung perkembangan anggota.',
+                    tools: ['Kepemimpinan', 'Administrasi Anggota', 'Manajemen Jadwal'],
+                    icon: 'fa-medal',
+                    accent: 'from-slate-600 to-slate-800'
+                },
+
+                // --- PRESTASI & PENGHARGAAN ---
+                {
+                    id: 'prestasi-iofest',
+                    title: 'Juara Harapan 2 Lomba UI/UX IoFest 2026',
+                    category: 'prestasi',
+                    categoryLabel: 'Prestasi • Tingkat Nasional (2026)',
+                    role: 'Finalis & Peraih Juara Harapan 2 Nasional',
+                    shortDesc: 'Meraih penghargaan tingkat nasional pada cabang kompetisi desain antarmuka dan pengalaman pengguna (UI/UX) IoFest 2026.',
+                    fullDesc: 'Berhasil meraih Juara Harapan 2 pada Lomba UI/UX IoFest 2026 Tingkat Nasional melalui perancangan solusi aplikasi berbasis riset kebutuhan pengguna, wireframe, prototipe interaktif, dan presentasi di hadapan dewan juri.',
+                    responsibilities: [
+                        'Melakukan perumusan masalah, penyusunan alur pengguna (user flow), dan perancangan antarmuka di Figma.',
+                        'Membangun prototipe interaktif yang mengutamakan kemudahan navigasi dan estetika visual.',
+                        'Mempresentasikan konsep solusi dan nilai inovasi produk pada tahap penjurian nasional.'
+                    ],
+                    outcome: 'Meraih gelar Juara Harapan 2 Lomba UI/UX IoFest 2026 Tingkat Nasional.',
+                    tools: ['Figma', 'UI/UX Design', 'Prototyping', 'Pitching'],
+                    icon: 'fa-trophy',
+                    accent: 'from-amber-500 to-yellow-600'
+                },
+                {
+                    id: 'prestasi-reinventing-cities',
+                    title: 'Juara 3 Kompetisi School Reinventing Cities 2025',
+                    category: 'prestasi',
+                    categoryLabel: 'Prestasi • Tingkat Provinsi (2025)',
+                    role: 'Peraih Juara 3 Tingkat Provinsi',
+                    shortDesc: 'Meraih Juara 3 tingkat provinsi dalam kompetisi perancangan gagasan lingkungan sekolah dan kota berkelanjutan.',
+                    fullDesc: 'Meraih penghargaan Juara 3 pada Kompetisi School Reinventing Cities 2025 Tingkat Provinsi dengan menghadirkan konsep penataan lingkungan sekolah yang ramah lingkungan, inovatif, dan berkelanjutan.',
+                    responsibilities: [
+                        'Menyusun konsep gagasan transformasi lingkungan sekolah berkelanjutan.',
+                        'Memvisualisasikan rancangan ide dan menyusun materi presentasi tim secara terstruktur.',
+                        'Memaparkan solusi dampak lingkungan dan sosial kepada panel juri tingkat provinsi.'
+                    ],
+                    outcome: 'Meraih gelar Juara 3 Kompetisi School Reinventing Cities 2025 Tingkat Provinsi.',
+                    tools: ['Perencanaan Konsep', 'Desain Presentasi', 'Public Speaking'],
+                    icon: 'fa-award',
+                    accent: 'from-emerald-500 to-green-600'
+                },
+                {
+                    id: 'prestasi-video-arsitektur',
+                    title: 'Juara 3 Lomba Video Kreatif Arsitektur 2025',
+                    category: 'prestasi',
+                    categoryLabel: 'Prestasi • Tingkat Nasional (2025)',
+                    role: 'Peraih Juara 3 Tingkat Nasional',
+                    shortDesc: 'Meraih Juara 3 tingkat nasional dalam produksi karya video kreatif bertema arsitektur dan ruang visual.',
+                    fullDesc: 'Meraih penghargaan Juara 3 pada Lomba Video Kreatif Arsitektur 2025 Tingkat Nasional melalui perpaduan konsep visual arsitektural, pengambilan gambar sinematik, dan teknik penyuntingan video yang komunikatif.',
+                    responsibilities: [
+                        'Merancang konsep alur visual dan narasi video bertema arsitektur.',
+                        'Melakukan pengambilan gambar serta penyuntingan video, transisi, dan tata suara.',
+                        'Menyelesaikan produksi karya sesuai standar teknis dan estetika kompetisi nasional.'
+                    ],
+                    outcome: 'Meraih gelar Juara 3 Lomba Video Kreatif Arsitektur 2025 Tingkat Nasional.',
+                    tools: ['Adobe Premiere Pro', 'Sinematografi', 'Visual Storytelling'],
+                    icon: 'fa-clapperboard',
+                    accent: 'from-cyan-500 to-sky-600'
+                }
+            ];
+
+            // 2. RENDER KARTU PORTOFOLIO
+            const portfolioGrid = document.getElementById('portfolio-grid');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            function renderPortfolio(filter = 'all') {
+                const filtered = filter === 'all'
+                    ? portfolioData
+                    : portfolioData.filter(item => item.category === filter);
+
+                portfolioGrid.innerHTML = filtered.map(item => `
+                    <article class="group bg-white dark:bg-navy-900 rounded-2xl border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="h-36 bg-gradient-to-br ${item.accent} p-6 flex items-between justify-between relative overflow-hidden">
+                                <div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-white/10"></div>
+                                <span class="self-start px-3 py-1 rounded-lg bg-black/25 backdrop-blur-xs text-white text-xs font-semibold">
+                                    ${item.categoryLabel}
+                                </span>
+                                <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-xs text-white flex items-center justify-center text-xl self-end">
+                                    <i class="fa-solid ${item.icon}"></i>
+                                </div>
+                            </div>
+
+                            <div class="p-6 space-y-3">
+                                <h3 class="font-heading text-lg font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition line-clamp-2">
+                                    ${item.title}
+                                </h3>
+                                <p class="text-xs font-semibold text-brand-600 dark:text-brand-400">
+                                    ${item.role}
+                                </p>
+                                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                                    ${item.shortDesc}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="px-6 pb-6 pt-2 space-y-4">
+                            <div class="flex flex-wrap gap-1.5">
+                                ${item.tools.slice(0, 3).map(tool => `
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[11px] font-medium">
+                                        ${tool}
+                                    </span>
+                                `).join('')}
+                            </div>
+
+                            <button type="button" data-id="${item.id}" class="open-detail-btn w-full py-2.5 px-4 rounded-xl bg-slate-50 dark:bg-navy-950 hover:bg-brand-600 hover:text-white text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-brand-600 text-xs font-semibold transition flex items-center justify-center gap-2">
+                                <span>Lihat Detail Peran & Karya</span>
+                                <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                            </button>
+                        </div>
+                    </article>
+                `).join('');
+
+                document.querySelectorAll('.open-detail-btn').forEach(btn => {
+                    btn.addEventListener('click', () => openProjectModal(btn.dataset.id));
+                });
+            }
+
+            renderPortfolio('all');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
+                        b.classList.add('bg-white', 'dark:bg-navy-900', 'text-slate-700', 'dark:text-slate-300', 'border', 'border-slate-200', 'dark:border-slate-800');
+                    });
+                    btn.classList.remove('bg-white', 'dark:bg-navy-900', 'text-slate-700', 'dark:text-slate-300', 'border', 'border-slate-200', 'dark:border-slate-800');
+                    btn.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
+                    renderPortfolio(btn.dataset.filter);
+                });
+            });
+
+            // 3. MODAL DETAIL PORTOFOLIO
+            const modal = document.getElementById('project-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            function openProjectModal(projectId) {
+                const project = portfolioData.find(p => p.id === projectId);
+                if (!project) return;
+
+                document.getElementById('modal-category').textContent = project.categoryLabel;
+                document.getElementById('modal-title').textContent = project.title;
+                document.getElementById('modal-role').textContent = project.role;
+                document.getElementById('modal-desc').textContent = project.fullDesc;
+                document.getElementById('modal-outcome').textContent = project.outcome;
+
+                const respList = document.getElementById('modal-responsibilities');
+                respList.innerHTML = project.responsibilities.map(r => `<li>${r}</li>`).join('');
+
+                const toolsContainer = document.getElementById('modal-tools');
+                toolsContainer.innerHTML = project.tools.map(t => `
+                    <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">
+                        ${t}
+                    </span>
+                `).join('');
+
+                const modalLinkWrapper = document.getElementById('modal-link-wrapper');
+                const modalLink = document.getElementById('modal-link');
+                if (project.link) {
+                    modalLink.href = project.link;
+                    modalLinkWrapper.classList.remove('hidden');
+                } else {
+                    modalLinkWrapper.classList.add('hidden');
+                }
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeProjectModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }
+
+            closeModalBtn.addEventListener('click', closeProjectModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeProjectModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeProjectModal();
+            });
+
+            // 4. TOAST NOTIFIKASI
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+            let toastTimeout;
+
+            function showToast(message, isSuccess = true) {
+                toastMessage.textContent = message;
+                toastIcon.className = isSuccess
+                    ? 'fa-solid fa-circle-check text-brand-400 dark:text-brand-600 text-base'
+                    : 'fa-solid fa-circle-exclamation text-amber-400 text-base';
+                toast.classList.remove('hidden');
+                toast.classList.add('flex');
+                clearTimeout(toastTimeout);
+                toastTimeout = setTimeout(() => {
+                    toast.classList.add('hidden');
+                    toast.classList.remove('flex');
+                }, 3500);
+            }
+
+            // 5. MENU MOBILE & DARK MODE
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                mobileMenuIcon.className = isHidden ? 'fa-solid fa-bars text-base' : 'fa-solid fa-xmark text-base';
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuIcon.className = 'fa-solid fa-bars text-base';
+                });
+            });
+
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlEl = document.documentElement;
+
+            if (localStorage.getItem('theme') === 'dark') {
+                htmlEl.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-sun text-sm text-amber-400';
+            }
+
+            themeToggle.addEventListener('click', () => {
+                const isDark = htmlEl.classList.toggle('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                themeIcon.className = isDark
+                    ? 'fa-solid fa-sun text-sm text-amber-400'
+                    : 'fa-solid fa-moon text-sm';
+            });
+
+            // 6. MODE EDIT TEKS PROFIL LANGSUNG
+            const toggleEditBtn = document.getElementById('toggle-edit-btn');
+            const editBtnLabel = document.getElementById('edit-btn-label');
+            const editBanner = document.getElementById('edit-banner');
+            const saveEditBtn = document.getElementById('save-edit-btn');
+            const editableFields = document.querySelectorAll('.editable-field');
+            let isEditing = false;
+
+            function setEditMode(active) {
+                isEditing = active;
+                editableFields.forEach(el => {
+                    el.contentEditable = active ? 'true' : 'false';
+                    if (active) {
+                        el.classList.add('outline-dashed', 'outline-1', 'outline-brand-500', 'rounded-md', 'px-1');
+                    } else {
+                        el.classList.remove('outline-dashed', 'outline-1', 'outline-brand-500', 'rounded-md', 'px-1');
+                    }
+                });
+                editBanner.classList.toggle('hidden', !active);
+                editBtnLabel.textContent = active ? 'Keluar Edit' : 'Mode Edit';
+            }
+
+            toggleEditBtn.addEventListener('click', () => setEditMode(!isEditing));
+            saveEditBtn.addEventListener('click', () => {
+                setEditMode(false);
+                showToast('Perubahan teks profil telah diterapkan!');
+            });
+
+            // 7. ANIMASI REVEAL SAAT SCROLL
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 8. DOWNLOAD / CETAK CV PDF & FITUR TAUTKAN PDF ASLI
+            const downloadCvBtn = document.getElementById('download-cv-btn');
+            const uploadCvInput = document.getElementById('upload-cv-pdf');
+            const customPdfBar = document.getElementById('custom-pdf-bar');
+            const customPdfName = document.getElementById('custom-pdf-name');
+            const directPdfDownload = document.getElementById('direct-pdf-download');
+            const removeCustomPdfBtn = document.getElementById('remove-custom-pdf');
+            let attachedPdfUrl = null;
+
+            uploadCvInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                if (file.type !== 'application/pdf') {
+                    showToast('Mohon pilih file berformat PDF.', false);
+                    return;
+                }
+                if (attachedPdfUrl) URL.revokeObjectURL(attachedPdfUrl);
+                attachedPdfUrl = URL.createObjectURL(file);
+                customPdfName.textContent = file.name;
+                directPdfDownload.href = attachedPdfUrl;
+                directPdfDownload.download = file.name;
+                customPdfBar.classList.remove('hidden');
+                showToast('File PDF CV berhasil ditautkan dan siap diunduh!');
+            });
+
+            removeCustomPdfBtn.addEventListener('click', () => {
+                if (attachedPdfUrl) URL.revokeObjectURL(attachedPdfUrl);
+                attachedPdfUrl = null;
+                uploadCvInput.value = '';
+                customPdfBar.classList.add('hidden');
+                showToast('Tautan PDF tambahan dihapus. Kembali ke pratinjau CV ATS.');
+            });
+
+            downloadCvBtn.addEventListener('click', () => {
+                if (attachedPdfUrl) {
+                    directPdfDownload.click();
+                    showToast('Mengunduh file PDF CV Anda...');
+                    return;
+                }
+                showToast('Membuka dialog simpan PDF CV ATS...');
+                setTimeout(() => {
+                    window.print();
+                }, 450);
+            });
+
+            // 9. SALIN EMAIL SEKALI KLIK (FALLBACK AMAN IFRAME)
+            const copyEmailBtn = document.getElementById('copy-email-btn');
+            const emailText = document.getElementById('email-text').textContent.trim();
+
+            copyEmailBtn.addEventListener('click', () => {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = emailText;
+                tempInput.style.position = 'fixed';
+                tempInput.style.opacity = '0';
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                try {
+                    document.execCommand('copy');
+                    showToast('Alamat email berhasil disalin ke clipboard!');
+                } catch (err) {
+                    showToast('Gagal menyalin email otomatis.', false);
+                }
+                document.body.removeChild(tempInput);
+            });
+
+            // 10. VALIDASI & PENGIRIMAN FORM KONTAK
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('sender-name').value.trim();
+                const email = document.getElementById('sender-email').value.trim();
+                const subject = document.getElementById('message-subject').value;
+                const message = document.getElementById('message-body').value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!name || !email || !message) {
+                    showToast('Mohon lengkapi nama, email, dan isi pesan Anda.', false);
+                    return;
+                }
+                if (!emailRegex.test(email)) {
+                    showToast('Format alamat email belum valid. Periksa kembali.', false);
+                    return;
+                }
+
+                const mailtoBody = encodeURIComponent(`Halo Brittany Celestine,\n\nNama: ${name}\nEmail: ${email}\nKeperluan: ${subject}\n\nPesan:\n${message}`);
+                const mailtoUrl = `mailto:brittanycelestine00@gmail.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${mailtoBody}`;
+                
+                showToast(`Terima kasih, ${name}! Membuka aplikasi email untuk mengirim pesan ke Brittany...`);
+                window.location.href = mailtoUrl;
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
